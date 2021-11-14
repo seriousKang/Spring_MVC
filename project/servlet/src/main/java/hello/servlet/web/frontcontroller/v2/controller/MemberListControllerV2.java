@@ -23,6 +23,6 @@ public class MemberListControllerV2 implements ControllerV2 {
 
         req.setAttribute("members", members);
 
-        return new MyView("/WEB-INF/members.jsp");
+        return new MyView("/WEB-INF/views/members.jsp");
     }
 }

@@ -24,7 +24,7 @@ public class MvcMemberListServlet extends HttpServlet {
 
         req.setAttribute("members", members);
 
-        String viewPath = "/WEB-INF/members.jsp";
+        String viewPath = "/WEB-INF/views/members.jsp";
         RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
         dispatcher.forward(req, resp);
     }
