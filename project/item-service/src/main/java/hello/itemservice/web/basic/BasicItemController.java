@@ -53,11 +53,30 @@ public class BasicItemController {
         return "basic/addForm";
     }
 
-    @PostMapping("/add")
-    public String save(@ModelAttribute Item item, Model model) {
-        Item savedItem = itemRepository.save(item);
-        model.addAttribute("item", savedItem);
+//    @PostMapping("/add")
+    public String addItemV1(@RequestParam String itemName,
+                       @RequestParam int price,
+                       @RequestParam int quantity,
+                       Model model) {
+        Item item = new Item(itemName, price, quantity);
+        itemRepository.save(item);
+        model.addAttribute("item", item);
 
+        return "basic/item";
+    }
+
+//    @PostMapping("/add")
+    public String addItemV2(@ModelAttribute Item item
+                            /*, Model model*/) {
+        itemRepository.save(item);
+//        model.addAttribute("item", item);
+
+        return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV3(Item item) {
+        itemRepository.save(item);
         return "basic/item";
     }
 }
