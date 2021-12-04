@@ -86,6 +86,11 @@ public class BasicController {
         return "basic/operation";
     }
 
+    @GetMapping("/attribute")
+    public String attribte() {
+        return "basic/attribute";
+    }
+
 
     @Component("helloBean")
     static class HelloBean {
