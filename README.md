@@ -1,1 +1,3 @@
-# For Spring MVC Study
+### For Spring MVC Study
+---
+- thymeleaf
