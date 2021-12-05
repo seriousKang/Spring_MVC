@@ -1,5 +1,6 @@
 package hello.itemservice.web.form;
 
+import hello.itemservice.domain.item.DeliveryCode;
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
 import hello.itemservice.domain.item.ItemType;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,17 @@ public class FormItemController {
         return ItemType.values();
     }
 
+    @ModelAttribute("deliveryCodes")
+    public List<DeliveryCode> deliveryCodes() {
+        List<DeliveryCode> list = new ArrayList<>();
+
+        list.add(new DeliveryCode("FAST", "빠른 배송"));
+        list.add(new DeliveryCode("NORMAL", "일반 배송"));
+        list.add(new DeliveryCode("SLOW", "느린 배송"));
+
+        return list;
+    }
+
     @GetMapping
     public String items(Model model) {
         List<Item> items = itemRepository.findAll();
@@ -62,6 +75,7 @@ public class FormItemController {
         log.info("item.open = {} ", item.getOpen());
         log.info("item.regions = {}", item.getRegions());
         log.info("item.itemType = {}", item.getItemType());
+        log.info("item.deliveryCode = {}", item.getDeliveryCode());
 
         Item savedItem = itemRepository.save(item);
         redirectAttributes.addAttribute("itemId", savedItem.getId());
