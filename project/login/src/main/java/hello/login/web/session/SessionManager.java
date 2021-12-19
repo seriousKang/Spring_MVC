@@ -33,6 +33,7 @@ public class SessionManager {
 
     /**
      * session 조회
+     *   - 클라이언트가 요청한 sessionId 쿠키 값으로, 세션 저장소에 보관한 값 조회
      */
     public Object getSession(HttpServletRequest req) {
         Cookie sessionCookie = findCookie(req, SESSION_COOKIE_NAME);
@@ -45,6 +46,7 @@ public class SessionManager {
 
     /**
      * session 만료
+     *   - 클라이언트가 요청한 sessionId 쿠키 값으로, 세션 저장소에 보관한 sessionId와 값 제거
      */
     public void expire(HttpServletRequest req) {
         Cookie sessionCookie = findCookie(req, SESSION_COOKIE_NAME);
